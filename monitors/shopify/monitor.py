@@ -87,15 +87,12 @@ def discord_webhook(title, url, thumbnail, sizes):
         fields.append({"name": size['title'], "value": size['url'], "inline": True})
 
     data = {
-        "username": USERNAME,
-        "avatar_url": AVATAR_URL,
         "embeds": [{
             "title": title,
             "url": URL.replace('.json', '/') + url, 
             "thumbnail": {"url": thumbnail},
             "fields": fields,
             "color": int(COLOUR),
-            "footer": {"text": "Developed by GitHub:yasserqureshi1"},
             "timestamp": str(datetime.utcnow()),
         }]
     }
@@ -124,7 +121,7 @@ def comparitor(product, start):
     available_sizes = []
     for size in product['variants']:
         if size['available']: # Makes an ATC link from the variant ID
-            available_sizes.append({'title': size['title'], 'url': '[ATC](' + URL[:URL.find('/', 10)] + '/cart/' + str(size['id']) + ':1)'})
+            available_sizes.append({'title': size['title'], 'url': '[Add to Cart](' + URL[:URL.find('/', 10)] + '/cart/' + str(size['id']) + ':1)'})
 
     
     product_item.append(available_sizes) # Appends in field
